@@ -4,6 +4,7 @@ import {
   useRef,
   useCallback,
 } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 // ─── global styles ────────────────────────────────────────────────────────────
 
@@ -2038,6 +2039,7 @@ export default function App() {
 
         <FloatingChat />
       </div>
+      <Analytics />
     </>
   );
 }
