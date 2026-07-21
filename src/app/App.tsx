@@ -1149,13 +1149,25 @@ function Budget() {
       setForm((prev) => ({ ...prev, [field]: e.target.value }));
   }
 
-  function submit(e: React.FormEvent) {
+async function submit(e: React.FormEvent) {
     e.preventDefault();
     tap();
     setStatus("sending");
-    // Simulate — replace with real endpoint or mailto
-    setTimeout(() => setStatus("sent"), 1200);
-  }
+    try{
+      const response=await fetch("/api/contact",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(form)
+      });
+      const data=await response.json();
+      if(!response.ok||!data.success) throw new Error();
+      setStatus("sent");
+    }catch(err){
+      console.error(err);
+      setStatus("error");
+    }
+}
+
 
   const wa_msg = encodeURIComponent(
     `Olá Manoel! Vi seu portfólio e tenho interesse em contratar o serviço: ${form.service || "…"}. Meu nome é ${form.name || "…"}.`,

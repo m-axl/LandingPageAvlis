@@ -1,0 +1,44 @@
+name: Relatar bug
+description: Ajude-nos a reproduzir e corrigir um problema.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Obrigado por relatar o problema. Preencha os campos abaixo.
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Passos para reproduzir
+      description: Liste os passos necessários para chegar ao erro.
+      placeholder: |
+        1. Acesse...
+        2. Clique em...
+        3. Veja o erro...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento esperado
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamento observado
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Ambiente
+      description: Navegador, dispositivo e sistema operacional.
+      placeholder: Chrome 126, Windows 11
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidências adicionais
+      description: Capturas de tela, vídeos ou logs (sem dados sensíveis).
